@@ -1,0 +1,37 @@
+name: 'Telegram Bot Webapp'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=h4rdp4ssw0rd!
+      - DB_NAME=telegram_bot_webapp
+      - JWT_SECRET=x86kk1vcgsly2s7ohh
+      - TELEGRAM_BOT_TOKEN=
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=h4rdp4ssw0rd!
+      - POSTGRES_DB=telegram_bot_webapp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
