@@ -79,6 +79,7 @@ DB_PASSWORD=db_password
 DB_NAME=telegram_bot_webapp
 JWT_SECRET=jwt_secret
 TELEGRAM_BOT_TOKEN=telegram_bot_token
+ADMIN_IDS=5120219444
 ```
 Replace the placeholders with your actual database credentials and Telegram Bot token.
 
